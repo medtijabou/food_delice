@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* Variables */
+
 /* Reset léger */
 * {
   margin: 0;
@@ -42,16 +42,19 @@ button {
 
 header {
   display: flex;
+  justify-content: center;
+ position: relative;
   padding: 20px 10px 10px 20px;
-  width: auto;
+
+}
+.go{
+  position: absolute;
+  left:15px
 }
 
-.log-site {
-  width: 90%;
-}
 
 .log-site img {
-  margin-left: 33%;
+  
   width: 150px;
 }
 
@@ -62,8 +65,8 @@ header {
 }
 .food-card img {
   width: 100%;
+  height: 383px;
   object-fit: cover;
-  position: relative;
 }
 
 .menu-card {
@@ -71,20 +74,22 @@ header {
   border-radius: 40px 40px 0 0;
   position: relative;
   z-index: 1;
+  cursor: pointer;
 }
 
-.titel-menu h2 {
-  font-family: "Shrikhand, cursive";
+.title-menu h1 {
+ 
+  font-family: "Shrikhand", cursiv;
   padding-top: 15px;
   padding-left: 15px;
 }
 
 .logo-love i, .logo-love-sytle {
-  font-size: 20px;
+  font-size: 30px;
   -webkit-text-stroke: white 1px;
   position: absolute;
-  right: 7%;
-  top: 28px;
+  top: 22px;
+  right: 20px;
   transition: opacity 1s;
 }
 .logo-love i.logo-love-sytle, .logo-love-sytle.logo-love-sytle {
@@ -92,8 +97,11 @@ header {
   display: inline-block;
   background: linear-gradient(193.33deg, #9356DC -11.44%, #FF79DA 123.93%);
   background-clip: text;
-  top: 22px;
+  top: 13px;
+  right: 20px;
   -webkit-text-fill-color: transparent;
+  position: absolute;
+ 
 }
 .logo-love i.logo-love-sytle:hover, .logo-love-sytle.logo-love-sytle:hover {
   opacity: 1;
@@ -104,22 +112,29 @@ header {
   width: 95%;
 }
 
-.underline-titel {
+.underline-title {
   text-transform: uppercase;
-  font-family: "Roboto, sans-serif";
+  font-family: "'Roboto', sans-serif";
   margin-bottom: 1.25rem;
   font-weight: 300;
   font-size: 16px;
+  position: relative;
 }
-.underline-titel::after {
+.underline-title::after {
   background: #99E2D0;
   bottom: -0.3125rem;
   content: "";
   display: block;
   height: 0.1875rem;
-  position: relative;
-  width: 2.5rem;
+  position: absolute;
+  width :2.5rem;
+  transition: width 500ms linear;
+ 
 }
+.underline-title:hover:after  {
+  width: 7rem;
+}
+
 
 .menu {
   padding: 0.75rem;
@@ -135,6 +150,16 @@ header {
   align-items: inherit;
   justify-content: space-between;
   flex-wrap: nowrap;
+}
+/* Keyframes */
+@keyframes menu-appear {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+
 }
 .menu:hover {
   box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
@@ -178,7 +203,7 @@ header {
 .btn__commande {
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding-bottom: 35px;
 }
 .btn__commande .btn {
   width: 186px;
@@ -192,13 +217,14 @@ header {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
+/**footer**/
 footer {
   width: 100%;
   background: #333;
   padding: 20px 0;
 }
-footer h5 {
-  font-family: "Shrikhand, cursive";
+footer h4 {
+  font-family: "Shrikhand", cursiv;
   font-weight: bold;
   font-style: italic;
   color: #fff;
@@ -220,35 +246,61 @@ footer ul li a {
 }
 
 /* Media Queries */
-@media (min-width: 768px) {
-  .container {
-    width: 90%;
+@media (min-width: 1025px) {
+  header{
+    padding: 25px 0px 25px 0px;
+  }
+ 
+  .menu-card{
     margin: auto;
+    width: 70%;
   }
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-  }
-  header .logo-site {
+  
+  .log-site {
     display: flex;
     justify-content: center;
-    margin-right: 32px;
-    width: 100%;
+   
   }
+  
   .food-card img {
     height: 380px;
     z-index: 1;
+  }
+  
+  .title-menu  {
+    display: flex;
+    justify-content: center;
+   
+  }
+  .title-menu h1{
+position: relative;
+   
+    font-size: 28px;
+
+  }
+  .logo-love i, .logo-love-sytle {
+
+    left: 680Px;
+    top: 22px;
+
+  }
+  .logo-love i.logo-love-sytle, .logo-love-sytle.logo-love-sytle{
+    left: 680Px;
+    top: 13px;
+   
+  }
+  .menu__entrees{
+    padding: 0px 10% 0px 10%;
   }
   footer {
     display: flex;
     text-align: center;
     flex-direction: row-reverse;
   }
-  footer h5 {
+  footer h4 {
     width: 15%;
     padding-top: 0;
+   
   }
   footer ul {
     display: flex;
@@ -256,20 +308,6 @@ footer ul li a {
     justify-content: end;
   }
 }
-@media (min-width: 1200px) {
-  .menu-card {
-    max-width: 1000px;
-    margin: auto;
-  }
-}
-/* Keyframes */
-@keyframes menu-appear {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
+
 
 /*# sourceMappingURL=delice.css.map */
